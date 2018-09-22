@@ -1,0 +1,22 @@
+<!-- appEncuestas/templates/appEncuestas/index.html  -->
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'appEncuestas/style.css' %}">
+
+ <h1>  Lista de preguntas  </h1>
+ 
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+	
+<!--        <li><a href="/appEncuestas/{{ question.id }}/">{{ question.question_text }}</a></li> -->
+		<li><a href="{% url 'espacioEncuestas:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay preguntas disponibles.</p>
+{% endif %}
+
+<!--
+<img src="{% static "appEncuestas/images/plantas.jpg" %}" alt="My image">
+-->
